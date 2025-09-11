@@ -8,4 +8,8 @@ export class NotificationService {
     create(notification: any) {
         return this.notificationRepository.create(notification);
     }
+
+    findAll() {
+        return this.notificationRepository.findAll();
+    }
 }

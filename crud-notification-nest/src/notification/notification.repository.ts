@@ -11,5 +11,8 @@ export class NotificationRepository {
         const newNotification = this.notificationModel.create(notification);
         return newNotification;
     }
+    findAll() {
+        return this.notificationModel.find().exec();
+    }
 }
 
