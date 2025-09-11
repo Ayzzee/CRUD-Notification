@@ -1,5 +1,8 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
+
+export type NotificationDocument = Notification & Document;  
+
 @Schema()
 export class Notification {
     @Prop({ required: true })
