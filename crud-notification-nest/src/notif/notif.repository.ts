@@ -6,6 +6,13 @@ import { Notification, NotificationDocument } from "./schemas/notif.schemas";
 
 @Injectable()
  export class NotificationRepository {
+    update(id: string, notification: any) {
+        return this.notificationModel.findByIdAndUpdate(id, notification, {new: true}).exec();
+    }
+    delete(id: string) {
+        return this.notificationModel.findByIdAndDelete(id).exec();
+    }
+
     findAll() {
         return this.notificationModel.find().exec();
     }
