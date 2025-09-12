@@ -5,6 +5,7 @@ import { Notification, NotificationDocument } from './schemas/notification.schem
 
 @Injectable()
 export class NotificationRepository {
+
     constructor(@InjectModel(Notification.name) private notificationModel : Model<NotificationDocument>) {}
 
     create(notification: Notification) {
@@ -13,6 +14,15 @@ export class NotificationRepository {
     }
     findAll() {
         return this.notificationModel.find().exec();
+    }
+
+    delete(id: string) {
+        return this.notificationModel.findByIdAndDelete(id).exec();
+    }
+
+    update(id: string, notification: any) {
+        this.notificationModel.findByIdAndUpdate(id, notification).exec();
+        return this.notificationModel.findById(id).exec();
     }
 }
 

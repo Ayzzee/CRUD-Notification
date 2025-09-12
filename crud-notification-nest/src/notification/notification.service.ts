@@ -3,6 +3,7 @@ import { NotificationRepository } from "./notification.repository";
 
 @Injectable()
 export class NotificationService {
+
     constructor(private readonly notificationRepository: NotificationRepository) {}
 
     create(notification: any) {
@@ -11,5 +12,13 @@ export class NotificationService {
 
     findAll() {
         return this.notificationRepository.findAll();
+    }
+
+    delete(id: string) {
+        return this.notificationRepository.delete(id);
+    }
+
+    update(id: string, notification: any) {
+        return this.notificationRepository.update(id, notification);
     }
 }
