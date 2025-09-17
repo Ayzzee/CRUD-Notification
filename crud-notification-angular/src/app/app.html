@@ -26,24 +26,13 @@
 </style>
 
 <main class="main">
-  <div class="login-container">
-    <app-login-access></app-login-access>
+  <div class="login-container" *ngIf="!isLoggedIn">
+    <app-login-access (loginSuccess)="onLoginSuccess()"></app-login-access>
   </div>
-  <br/>
-  <div class="notif-container">
+
+  <div class="notif-container" *ngIf="isLoggedIn">
     <app-notification-list></app-notification-list>
   </div>
-  
-  
 </main>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 
 <router-outlet />

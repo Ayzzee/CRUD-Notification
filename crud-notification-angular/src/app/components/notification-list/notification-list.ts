@@ -16,24 +16,22 @@ export class NotificationListComponent implements OnInit {
 
   constructor(private notificationService: NotificationService) {}
 
-  ngOnInit(): void {
-    this.loadNotifications();
-  }
-
-  loadNotifications() {
-  this.notificationService.getAll().subscribe({
-    next: (data) => {
-      console.log("Notifications reçues :", data); 
-      this.notifications = data;
-    },
-    error: (err) => {
-      console.error('Erreur de chargement des notifications', err);
-    }
+  ngOnInit() {
+  this.notificationService.getAll().subscribe(data => {
+    this.notifications = data;
   });
   }
 
+
+  loadNotifications() {
+    this.notificationService.getAll().subscribe({
+      next: (data) => {
+        this.notifications = data;
+      }
+    });
+  }
+
   addNotification() {
-    console.log("Ajout en cours :", this.newNotif); 
 
     this.notificationService.create(this.newNotif).subscribe({
       next: () => {
@@ -48,9 +46,7 @@ export class NotificationListComponent implements OnInit {
     this.notificationService.delete(id).subscribe({
       next: () => {
         this.loadNotifications();
-      },
-      error: (err) => console.error("Erreur suppression :", err)
+      }
     });
   }
-
 }

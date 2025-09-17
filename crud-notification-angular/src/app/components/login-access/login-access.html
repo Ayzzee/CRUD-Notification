@@ -4,5 +4,7 @@
     <input [(ngModel)]="login.username" name="username" placeholder="username" required />
     <input [(ngModel)]="login.password" name="password" placeholder="password" required />
     <button type="submit">Se connecter</button>
-  </form>
+    </form>
+    <p *ngIf="invalidMDP" style="color:red">{{invalidMDP}}</p>
+</div>
     
