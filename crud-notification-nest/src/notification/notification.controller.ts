@@ -6,12 +6,7 @@ export class NotificationController {
     constructor(private readonly notificationService: NotificationService) {}
 
     @Post()
-    create() {
-        const notification = {
-            title: "new notification",
-            message: "this is a test",
-            date: new Date()
-        };
+    create(@Body() notification: any) {
         return this.notificationService.create(notification);
     }
 

@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>Notifications</h2>
+
+  <!-- Formulaire d'ajout -->
+  <form (ngSubmit)="addNotification()">
+    <input [(ngModel)]="newNotif.title" name="title" placeholder="Titre" required />
+    <input [(ngModel)]="newNotif.message" name="message" placeholder="Message" required />
+    <button type="submit">Ajouter</button>
+  </form>
+
+  <ul>
+    <li *ngFor="let notif of notifications">
+      <strong>{{ notif.title }}</strong> - {{ notif.message }}
+      <button (click)="deleteNotification(notif._id!)">❌ Supprimer</button>
+    </li>
+  </ul>
+</div>
